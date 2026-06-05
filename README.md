@@ -34,7 +34,7 @@ The temporal classification engine is built using **PyTorch** and utilizes a Lon
 
 ![WORKING](result/WORKING.png)
 
-![Confusion-Matrix] (confusion_matrix.png)
+![Confusion-Matrix](confusion_matrix.png)
 
 ## Training Process
 The model was trained on an NVIDIA RTX 3050 GPU.
