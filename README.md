@@ -30,12 +30,14 @@ The temporal classification engine is built using **PyTorch** and utilizes a Lon
 * **Output Layer:** A Fully Connected (Linear) layer mapping the 128 hidden features from the final sequence time-step to the 8 categorical classes.
 * **Sequence Length:** Fixed at 90 frames (approx. 3 seconds at 30 FPS).
 
+![Streamlit UI Dashboard](/home/skruby/Desktop/ML/ASSESSMENT/video-activity-analyzer/result/process.png)
+
 ## Training Process
 The model was trained on an NVIDIA RTX 3050 GPU.
 * **Data Split:** 80% Training, 20% Testing (stratified to ensure equal class representation).
 * **Loss Function:** `CrossEntropyLoss`. (Note: Manual class weights were removed after implementing the augmented oversampling pipeline).
-* **Optimizer:** Adam optimizer with a learning rate of `0.0005`.
-* **Batch Size & Epochs:** Trained with a batch size of 16 for 60 epochs to allow the higher-capacity network to converge smoothly.
+* **Optimizer:** Adam optimizer with a learning rate of `0.0002`.
+* **Batch Size & Epochs:** Trained with a batch size of 16 for 100 epochs to allow the higher-capacity network to converge smoothly.
 
 ## Evaluation Results
 *(Note to evaluator: The pipeline focuses heavily on data engineering and UI robustness over pure academic accuracy on a limited dataset).* By addressing the raw data constraints through spatial normalization and oversampling, the model broke out of early mode-collapse. Precision and Recall metrics demonstrate that the network successfully learned to distinguish structural features of minority classes (`jump`, `pushup`) rather than universally predicting the majority class (`walk`). A `confusion_matrix.png` artifact is generated post-training to map exact class-by-class validation performance.
@@ -44,7 +46,7 @@ The model was trained on an NVIDIA RTX 3050 GPU.
 During development, three critical failure modes were identified and resolved:
 1. **Mode Collapse:** Initial unweighted training resulted in massive overfitting; the model predicted `walk` for every input. **Resolution:** Implemented synthetic oversampling to force the LSTM to learn minority patterns.
 2. **Spatial Generalization Failure:** The model struggled to recognize the same activity performed in different areas of the frame. **Resolution:** Calculated the mean $(X,Y)$ of the YOLO keypoints per frame and subtracted it, shifting every skeleton to a centered, normalized grid.
-3. **Low Confidence & Temporal Jitter:** Raw sequential predictions flickered wildly, and softmax probabilities hovered around 40-50% due to zero-padding artifacts. **Resolution:** Replaced zero-padding with "last-frame repetition" and introduced Temperature Scaling ($T=0.5$) in the inference engine to sharpen output probabilities.
+3. **Low Confidence & Temporal Jitter:** Raw sequential predictions flickered wildly, and softmax probabilities hovered around 40-50% due to zero-padding artifacts.**Resolution:** Replaced zero-padding with "last-frame repetition" and introduced Temperature Scaling ($T=0.5$) in the inference engine to sharpen output probabilities.
 
 ## Future Improvements
 Given more time and computational resources, the following upgrades would be prioritized:
