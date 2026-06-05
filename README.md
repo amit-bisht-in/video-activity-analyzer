@@ -31,7 +31,10 @@ The temporal classification engine is built using **PyTorch** and utilizes a Lon
 * **Sequence Length:** Fixed at 90 frames (approx. 3 seconds at 30 FPS).
 
 ![WORKING](result/process.png)
-![Confusion Matrix ] (confusion_matrix.png)
+
+![WORKING](result/WORKING.png)
+
+![Confusion-Matrix] (confusion_matrix.png)
 
 ## Training Process
 The model was trained on an NVIDIA RTX 3050 GPU.
@@ -42,6 +45,10 @@ The model was trained on an NVIDIA RTX 3050 GPU.
 
 ## Evaluation Results
 *(Note to evaluator: The pipeline focuses heavily on data engineering and UI robustness over pure academic accuracy on a limited dataset).* By addressing the raw data constraints through spatial normalization and oversampling, the model broke out of early mode-collapse. Precision and Recall metrics demonstrate that the network successfully learned to distinguish structural features of minority classes (`jump`, `pushup`) rather than universally predicting the majority class (`walk`). A `confusion_matrix.png` artifact is generated post-training to map exact class-by-class validation performance.
+
+![WORKING](result/UI.png)
+
+![WORKING](result/RESULT.png)
 
 ## Error Analysis
 During development, three critical failure modes were identified and resolved:
