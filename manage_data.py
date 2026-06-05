@@ -37,7 +37,7 @@ def normalize_skeleton(features):
 
 def augment_skeleton(features):
     """
-    Applies synthetic augmentation via horizontal mirroring and Gaussian jitter
+    Applying synthetic augmentation via horizontal mirroring and Gaussian jitter
     to prevent overfitting on minority classes during upsampling.
     """
     augmented = np.copy(features)
@@ -57,7 +57,7 @@ def augment_skeleton(features):
 
 def process_and_balance_data():
     """
-    Main preprocessing pipeline: standardizes sequence lengths, applies spatial
+    Main preprocessing: standardizes sequence lengths, applies spatial
     normalization, and balances class distribution via augmented oversampling.
     """
     if os.path.exists(OUTPUT_DIR):

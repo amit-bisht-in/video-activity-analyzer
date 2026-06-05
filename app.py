@@ -156,8 +156,8 @@ if uploaded_file is not None:
             
             m1, m2 = st.columns(2)
             
-            # Calculate the majority classification across the ENTIRE video, 
-            # ignoring the resting/uncertain frames at the beginning and end.
+            # Calculate the majority classification across the video, 
+            # ignoring the uncertain frames at the beginning and end
             valid_predictions = [p for p in smoothed_predictions_log if p != "uncertain"]
             
             if valid_predictions:

@@ -10,7 +10,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Model Hyperparameters
+#Hyperparameters
 FEATURES_DIR = "balanced_features"
 INPUT_SIZE = 51
 HIDDEN_SIZE = 128
@@ -62,7 +62,7 @@ class ActionLSTM(nn.Module):
         
     def forward(self, x):
         out, _ = self.lstm(x)
-        # Extract the sequence representation from the final time step
+        # Extract the sequence representation from the final time stamp
         return self.fc(out[:, -1, :])
 
 def train_and_evaluate():
@@ -105,7 +105,7 @@ def train_and_evaluate():
     print("\n--- Model Evaluation Metrics ---")
     print(classification_report(all_labels, all_preds, target_names=classes))
     
-    # Generate and export confusion matrix visualization
+    # Generate and export confusion matrix 
     cm = confusion_matrix(all_labels, all_preds)
     plt.figure(figsize=(8, 6))
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=classes, yticklabels=classes)
