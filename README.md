@@ -38,7 +38,7 @@ The temporal classification engine is built using **PyTorch** and utilizes a Lon
 
 #install the requirements 
 
-´´´ K ´´´ 
+``` k ``` 
 
 The model was trained on an NVIDIA RTX 3050 GPU.
 * **Data Split:** 80% Training, 20% Testing (stratified to ensure equal class representation).
