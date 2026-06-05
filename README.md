@@ -36,7 +36,7 @@ The temporal classification engine is built using **PyTorch** and utilizes a Lon
 
 ## Training Process
 
-# install the requirements
+### Install the packages/libraries 
 
 ``` pip install -r requirement.txt ```
 
