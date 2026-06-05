@@ -1,0 +1,14 @@
+
+venv/
+env/
+__pycache__/
+
+# Datasets & Features
+dataset/
+extracted_features/
+balanced_features/
+
+*.mp4
+*.avi
+*.mov
+
