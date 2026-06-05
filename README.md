@@ -30,7 +30,7 @@ The temporal classification engine is built using **PyTorch** and utilizes a Lon
 * **Output Layer:** A Fully Connected (Linear) layer mapping the 128 hidden features from the final sequence time-step to the 8 categorical classes.
 * **Sequence Length:** Fixed at 90 frames (approx. 3 seconds at 30 FPS).
 
-![working](process.png)
+![WORKING](result/process.png)
 
 ## Training Process
 The model was trained on an NVIDIA RTX 3050 GPU.
