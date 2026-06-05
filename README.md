@@ -31,6 +31,7 @@ The temporal classification engine is built using **PyTorch** and utilizes a Lon
 * **Sequence Length:** Fixed at 90 frames (approx. 3 seconds at 30 FPS).
 
 ![WORKING](result/process.png)
+![Confusion Matrix ] (confusion_matrix.png)
 
 ## Training Process
 The model was trained on an NVIDIA RTX 3050 GPU.
